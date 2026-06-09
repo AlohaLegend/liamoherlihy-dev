@@ -284,8 +284,6 @@ const setEra = (key, options = {}) => {
 };
 
 const scheduleAutoUpgrades = () => {
-  if (reduceMotion) return;
-
   upgradeTimers.push(
     window.setTimeout(() => {
       if (!userPickedEra) setEra("studio", { animate: true });
