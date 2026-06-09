@@ -1,5 +1,9 @@
 const year = document.querySelector("[data-year]");
 const typeLine = document.querySelector("[data-type-text]");
+const bootScreen = document.querySelector("[data-boot-screen]");
+const bootLog = document.querySelector("[data-boot-log]");
+const menuClock = document.querySelector("[data-menu-clock]");
+const windows = Array.from(document.querySelectorAll("[data-window]"));
 const translationButtons = Array.from(document.querySelectorAll("[data-translation]"));
 const translationKicker = document.querySelector("[data-translation-kicker]");
 const translationTitle = document.querySelector("[data-translation-title]");
@@ -8,6 +12,14 @@ const translationPoints = document.querySelector("[data-translation-points]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formNote = document.querySelector("[data-form-note]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const bootLines = [
+  "checking keyboard...",
+  "loading plain-English translator...",
+  "mounting portfolio disk...",
+  "turning jargon off...",
+  "ready."
+];
 
 const translations = {
   old: {
@@ -56,26 +68,98 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
-const revealPage = () => {
-  document.body.classList.add("is-ready");
+const updateClock = () => {
+  if (!menuClock) return;
+  const now = new Date();
+  menuClock.textContent = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
 };
 
-const typeIntro = () => {
-  if (!typeLine) {
-    revealPage();
+updateClock();
+window.setInterval(updateClock, 1000);
+
+const openDesktop = () => {
+  document.body.classList.add("is-booted");
+  if (bootScreen) bootScreen.setAttribute("aria-hidden", "true");
+
+  windows.forEach((item, index) => {
+    const delay = reduceMotion ? 0 : 120 + index * 120;
+    window.setTimeout(() => item.classList.add("is-open"), delay);
+  });
+
+  window.setTimeout(typeIntro, reduceMotion ? 0 : 240);
+};
+
+const appendBootLine = (text, onComplete) => {
+  if (!bootLog) {
+    onComplete();
     return;
   }
 
+  const line = document.createElement("p");
+  line.className = "boot-line is-active";
+  bootLog.append(line);
+
+  if (reduceMotion) {
+    line.textContent = text;
+    line.classList.remove("is-active");
+    onComplete();
+    return;
+  }
+
+  let index = 0;
+  const tick = () => {
+    line.textContent = text.slice(0, index);
+    index += 1;
+
+    if (index <= text.length) {
+      window.setTimeout(tick, 18);
+      return;
+    }
+
+    line.classList.remove("is-active");
+    window.setTimeout(onComplete, 120);
+  };
+
+  tick();
+};
+
+const startBoot = () => {
+  if (!bootLog) {
+    openDesktop();
+    return;
+  }
+
+  let index = 0;
+  const next = () => {
+    if (index >= bootLines.length) {
+      window.setTimeout(openDesktop, reduceMotion ? 0 : 280);
+      return;
+    }
+
+    appendBootLine(bootLines[index], () => {
+      index += 1;
+      next();
+    });
+  };
+
+  next();
+};
+
+const typeIntro = () => {
+  if (!typeLine) return;
   const text = typeLine.dataset.typeText || typeLine.textContent || "";
 
   if (reduceMotion) {
     typeLine.textContent = text;
     typeLine.classList.add("is-done");
-    revealPage();
     return;
   }
 
   typeLine.textContent = "";
+  typeLine.classList.remove("is-done");
   let index = 0;
 
   const tick = () => {
@@ -83,15 +167,14 @@ const typeIntro = () => {
     index += 1;
 
     if (index <= text.length) {
-      window.setTimeout(tick, 68);
+      window.setTimeout(tick, 54);
       return;
     }
 
     typeLine.classList.add("is-done");
-    window.setTimeout(revealPage, 240);
   };
 
-  window.setTimeout(tick, 260);
+  tick();
 };
 
 const renderTranslation = (key) => {
@@ -116,7 +199,7 @@ translationButtons.forEach((button) => {
   button.addEventListener("click", () => renderTranslation(button.dataset.translation));
 });
 
-typeIntro();
+startBoot();
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {

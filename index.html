@@ -13,7 +13,7 @@
     <meta property="og:title" content="Liam O'Herlihy | Websites in Plain English" />
     <meta
       property="og:description"
-      content="No jargon, no mystery. Simple websites, refreshes, portfolios, and useful web help."
+      content="Simple websites, refreshes, portfolios, and useful web help without the jargon."
     />
     <meta property="og:image" content="assets/work/bam-food-social.png" />
     <meta name="theme-color" content="#050505" />
@@ -41,88 +41,105 @@
   <body>
     <a class="skip-link" href="#translator">Skip to website translator</a>
 
-    <header class="top-bar" aria-label="Site header">
-      <a class="wordmark" href="#top">liamoherlihy.dev</a>
-      <nav class="top-nav" aria-label="Primary navigation">
+    <div class="boot-screen" data-boot-screen aria-label="Startup sequence">
+      <div class="boot-box">
+        <div class="boot-mark" aria-hidden="true">LO</div>
+        <div class="boot-copy">
+          <p>liamoherlihy.dev</p>
+          <div class="boot-log" data-boot-log aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <header class="menu-bar" aria-label="Site header">
+      <a class="menu-brand" href="#top">liamoherlihy.dev</a>
+      <nav class="menu-nav" aria-label="Primary navigation">
         <a href="#translator">Translate</a>
         <a href="#work">Work</a>
         <a href="#contact">Start</a>
       </nav>
+      <span class="menu-clock" data-menu-clock>--:--</span>
     </header>
 
-    <main id="top">
-      <section class="intro-screen" aria-labelledby="intro-title">
-        <div class="blueprint" aria-hidden="true">
-          <span>home</span>
-          <span>proof</span>
-          <span>call</span>
-          <span>book</span>
+    <main class="desktop" id="top">
+      <section class="startup-window window" data-window aria-labelledby="intro-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Startup</span>
         </div>
-        <div class="intro-copy">
-          <p class="intro-kicker">websites without the weird meeting</p>
-          <h1 id="intro-title" class="type-line" data-type-text="I build websites.">I build websites.</h1>
-          <p class="intro-subline" data-intro-reveal>
-            Not “digital transformation.” Not a pile of acronyms. A clear place
-            people can understand, trust, and use.
-          </p>
+        <div class="startup-grid">
+          <div class="computer-icon" aria-hidden="true">
+            <div class="computer-face">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="startup-copy">
+            <p class="system-label">Websites without the weird meeting</p>
+            <h1 id="intro-title" class="type-line" data-type-text="I build websites.">I build websites.</h1>
+            <p>
+              For people who have better things to do than learn website words.
+              I turn the messy version into a clear site people can understand,
+              trust, and use.
+            </p>
+          </div>
         </div>
       </section>
 
-      <div class="page-sheet" id="translator" data-page-sheet>
-        <section class="translator-section" aria-labelledby="translator-title">
-          <div class="section-grid">
-            <div class="statement">
-              <p class="tiny-label">plain-English web help</p>
-              <h2 id="translator-title">
-                Tell me what feels wrong. I’ll translate it into what to build.
-              </h2>
+      <section class="translator-section window" id="translator" data-window aria-labelledby="translator-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Website Translator</span>
+        </div>
+        <div class="translator-layout">
+          <div class="statement">
+            <p class="system-label">No jargon mode</p>
+            <h2 id="translator-title">Tell me what feels wrong. I will translate it into what to build.</h2>
+          </div>
+
+          <div class="translator" aria-label="Website problem translator">
+            <div class="feeling-list" aria-label="Choose what sounds true">
+              <button class="feeling is-active" type="button" data-translation="old">
+                My website feels old.
+              </button>
+              <button class="feeling" type="button" data-translation="click">
+                People do not know what to click.
+              </button>
+              <button class="feeling" type="button" data-translation="proof">
+                My proof is scattered everywhere.
+              </button>
+              <button class="feeling" type="button" data-translation="blank">
+                I only know I need a website.
+              </button>
             </div>
 
-            <div class="translator" aria-label="Website problem translator">
-              <div class="translator-bar">
-                <span>website translator</span>
-                <span>no jargon mode</span>
-              </div>
-              <div class="translator-body">
-                <div class="feeling-list" aria-label="Choose what sounds true">
-                  <button class="feeling is-active" type="button" data-translation="old">
-                    My website feels old.
-                  </button>
-                  <button class="feeling" type="button" data-translation="click">
-                    People do not know what to click.
-                  </button>
-                  <button class="feeling" type="button" data-translation="proof">
-                    My proof is scattered everywhere.
-                  </button>
-                  <button class="feeling" type="button" data-translation="blank">
-                    I only know I need a website.
-                  </button>
-                </div>
-
-                <div class="translation-output" aria-live="polite">
-                  <p data-translation-kicker>What that usually means</p>
-                  <h3 data-translation-title>The site stopped matching the business.</h3>
-                  <p data-translation-copy>
-                    The business grew. The website stayed frozen. I would rebuild
-                    the first impression, update the words and visuals, and make
-                    the next step obvious.
-                  </p>
-                  <ul data-translation-points>
-                    <li>Current photos, clearer sections, better mobile layout</li>
-                    <li>Calls, forms, booking, or directions placed where people need them</li>
-                  </ul>
-                </div>
-              </div>
+            <div class="translation-output" aria-live="polite">
+              <p data-translation-kicker>What that usually means</p>
+              <h3 data-translation-title>The site stopped matching the business.</h3>
+              <p data-translation-copy>
+                The business grew. The website stayed frozen. I would rebuild
+                the first impression, update the words and visuals, and make
+                the next step obvious.
+              </p>
+              <ul data-translation-points>
+                <li>Current photos, clearer sections, better mobile layout</li>
+                <li>Calls, forms, booking, or directions placed where people need them</li>
+              </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="jargon-section" aria-labelledby="jargon-title">
-          <div class="jargon-heading">
-            <p class="tiny-label">words you do not need to learn</p>
+      <section class="jargon-section window" data-window aria-labelledby="jargon-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Words You Do Not Need To Learn</span>
+        </div>
+        <div class="jargon-layout">
+          <div>
+            <p class="system-label">Plain English</p>
             <h2 id="jargon-title">I translate the website stuff.</h2>
           </div>
-
           <div class="jargon-grid">
             <article>
               <span>SEO</span>
@@ -137,63 +154,72 @@
               <p>Where the website lives after it is launched.</p>
             </article>
             <article>
-              <span>Responsive</span>
+              <span>Mobile</span>
               <p>It should look right on phones without pinching the screen.</p>
             </article>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="work-section" id="work" aria-labelledby="work-title">
-          <div class="work-heading">
-            <p class="tiny-label">selected work</p>
-            <h2 id="work-title">Proof without making you dig.</h2>
-          </div>
+      <section class="work-section window" id="work" data-window aria-labelledby="work-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Portfolio Disk</span>
+        </div>
+        <div class="work-heading">
+          <p class="system-label">Selected work</p>
+          <h2 id="work-title">Proof without making you dig.</h2>
+        </div>
 
-          <div class="work-list">
-            <article class="work-row">
-              <div class="work-index">01</div>
-              <div class="work-copy">
-                <p>BAM Media Group</p>
-                <h3>A food-social landing page that makes the idea easy to understand.</h3>
-                <span>Landing page / mobile layout / launch copy</span>
-              </div>
-              <div class="work-image">
-                <img src="assets/work/bam-food-social.png" alt="BAM Media Group website preview" />
-              </div>
-            </article>
+        <div class="work-list">
+          <article class="work-row">
+            <div class="work-index">01</div>
+            <div class="work-copy">
+              <p>BAM Media Group</p>
+              <h3>A food-social landing page that makes the idea easy to understand.</h3>
+              <span>Landing page / mobile layout / launch copy</span>
+            </div>
+            <div class="work-image">
+              <img src="assets/work/bam-food-social.png" alt="BAM Media Group website preview" />
+            </div>
+          </article>
 
-            <article class="work-row">
-              <div class="work-index">02</div>
-              <div class="work-copy">
-                <p>Jack Kleinick</p>
-                <h3>A portfolio where the work speaks first.</h3>
-                <span>Creative portfolio / motion feel / clean project browsing</span>
-              </div>
-              <div class="work-image">
-                <img src="assets/work/jack-studio-hero.jpg" alt="Jack Kleinick portfolio preview" />
-              </div>
-            </article>
+          <article class="work-row">
+            <div class="work-index">02</div>
+            <div class="work-copy">
+              <p>Jack Kleinick</p>
+              <h3>A portfolio where the work speaks first.</h3>
+              <span>Creative portfolio / motion feel / clean project browsing</span>
+            </div>
+            <div class="work-image">
+              <img src="assets/work/jack-studio-hero.jpg" alt="Jack Kleinick portfolio preview" />
+            </div>
+          </article>
 
-            <article class="work-row">
-              <div class="work-index">03</div>
-              <div class="work-copy">
-                <p>PARTI</p>
-                <h3>A project system for photos, credits, and proof.</h3>
-                <span>Case studies / project data / image structure</span>
-              </div>
-              <div class="work-image">
-                <img src="assets/work/parti-bytedance.webp" alt="PARTI project preview" />
-              </div>
-            </article>
-          </div>
-        </section>
+          <article class="work-row">
+            <div class="work-index">03</div>
+            <div class="work-copy">
+              <p>PARTI</p>
+              <h3>A project system for photos, credits, and proof.</h3>
+              <span>Case studies / project data / image structure</span>
+            </div>
+            <div class="work-image">
+              <img src="assets/work/parti-bytedance.webp" alt="PARTI project preview" />
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="method-section" aria-labelledby="method-title">
-          <div class="method-copy">
-            <p class="tiny-label">how this works</p>
+      <section class="method-section window" data-window aria-labelledby="method-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Read Me</span>
+        </div>
+        <div class="method-layout">
+          <div>
+            <p class="system-label">How this works</p>
             <h2 id="method-title">A website build, explained like a normal project.</h2>
           </div>
-
           <ol class="method-list">
             <li>
               <span>Send the messy version.</span>
@@ -216,11 +242,17 @@
               what changed.
             </li>
           </ol>
-        </section>
+        </div>
+      </section>
 
-        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <section class="contact-section window" id="contact" data-window aria-labelledby="contact-title">
+        <div class="window-bar">
+          <span class="window-dot" aria-hidden="true"></span>
+          <span>Message Liam</span>
+        </div>
+        <div class="contact-layout">
           <div class="contact-copy">
-            <p class="tiny-label">start rough</p>
+            <p class="system-label">Start rough</p>
             <h2 id="contact-title">Send the version in your head.</h2>
             <p>
               It does not need to be polished. Tell me what the business does,
@@ -263,14 +295,14 @@
             <button class="button primary" type="submit">Draft email</button>
             <p class="form-note" data-form-note>Opens your email app with this filled in.</p>
           </form>
-        </section>
+        </div>
+      </section>
 
-        <footer class="site-footer">
-          <p>liamoherlihy.dev</p>
-          <p>Built by Liam O'Herlihy in Los Angeles.</p>
-          <p>&copy; <span data-year></span></p>
-        </footer>
-      </div>
+      <footer class="site-footer">
+        <p>liamoherlihy.dev</p>
+        <p>Built by Liam O'Herlihy in Los Angeles.</p>
+        <p>&copy; <span data-year></span></p>
+      </footer>
     </main>
   </body>
 </html>
