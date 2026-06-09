@@ -1,44 +1,53 @@
-const header = document.querySelector("[data-header]");
 const year = document.querySelector("[data-year]");
+const typeLine = document.querySelector("[data-type-text]");
+const translationButtons = Array.from(document.querySelectorAll("[data-translation]"));
+const translationKicker = document.querySelector("[data-translation-kicker]");
+const translationTitle = document.querySelector("[data-translation-title]");
+const translationCopy = document.querySelector("[data-translation-copy]");
+const translationPoints = document.querySelector("[data-translation-points]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formNote = document.querySelector("[data-form-note]");
-const clock = document.querySelector("[data-lab-clock]");
-const modeButtons = Array.from(document.querySelectorAll("[data-mode]"));
-const modeTitle = document.querySelector("[data-mode-title]");
-const modeKicker = document.querySelector("[data-mode-kicker]");
-const modeSummary = document.querySelector("[data-mode-summary]");
-const modePoints = document.querySelector("[data-mode-points]");
-const artifacts = Array.from(document.querySelectorAll("[data-artifact]"));
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const modes = {
-  site: {
-    kicker: "Website build",
-    title: "Make the first click make sense.",
-    summary:
-      "A custom site shaped around one job: explain the offer, prove trust, capture demand, and make follow-up easier.",
+const translations = {
+  old: {
+    kicker: "What that usually means",
+    title: "The site stopped matching the business.",
+    copy:
+      "The business grew. The website stayed frozen. I would rebuild the first impression, update the words and visuals, and make the next step obvious.",
     points: [
-      "Page architecture, copy, visual system, and responsive build",
-      "SEO, analytics, deployment, and lead-routing handoff"
+      "Current photos, clearer sections, better mobile layout",
+      "Calls, forms, booking, or directions placed where people need them"
     ]
   },
-  workflow: {
-    kicker: "AI workflow",
-    title: "Put the repetitive work on rails.",
-    summary:
-      "Lead intake, summaries, support drafts, reports, and content ops become one reviewed workflow instead of scattered manual labor.",
+  click: {
+    kicker: "What that usually means",
+    title: "The page is making visitors guess.",
+    copy:
+      "A customer should not have to hunt for the next move. I would simplify the page around the action you actually want.",
     points: [
-      "Workflow audit across the tools you already use",
-      "AI/API automation with checkpoints, logging, and docs"
+      "Clear buttons for call, book, order, quote, message, or visit",
+      "A simpler homepage path with fewer dead ends"
     ]
   },
-  system: {
-    kicker: "Business operating system",
-    title: "Connect the site to the machine behind it.",
-    summary:
-      "Frontend, lead capture, assistant logic, admin views, analytics, and iteration become one practical system.",
+  proof: {
+    kicker: "What that usually means",
+    title: "The trust is real, but it is not working hard enough.",
+    copy:
+      "Reviews, photos, services, press, and past work should be close to the decision. I would turn scattered proof into a clear reason to trust you.",
     points: [
-      "Website plus CRM or database-backed workflows",
-      "Assistant, dashboard, launch QA, and improvement loop"
+      "Project rows, review placement, FAQs, and stronger service pages",
+      "A portfolio or proof section that normal people can scan quickly"
+    ]
+  },
+  blank: {
+    kicker: "What that usually means",
+    title: "You need someone to shape the first version.",
+    copy:
+      "You do not need a perfect brief. I can help turn the rough idea into a simple website plan, then build the useful first version.",
+    points: [
+      "Plain-English questions before design starts",
+      "A small site that explains the offer and gives people a way to act"
     ]
   }
 };
@@ -47,52 +56,67 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
-const updateHeader = () => {
-  if (!header) return;
-  header.classList.toggle("is-scrolled", window.scrollY > 16);
+const revealPage = () => {
+  document.body.classList.add("is-ready");
 };
 
-updateHeader();
-window.addEventListener("scroll", updateHeader, { passive: true });
-
-const updateClock = () => {
-  if (!clock) return;
-  const now = new Date();
-  clock.textContent = now.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
-  });
-};
-
-updateClock();
-window.setInterval(updateClock, 1000);
-
-const setMode = (modeName) => {
-  const mode = modes[modeName];
-  if (!mode) return;
-
-  modeButtons.forEach((button) => {
-    const active = button.dataset.mode === modeName;
-    button.classList.toggle("is-active", active);
-    button.setAttribute("aria-selected", active ? "true" : "false");
-  });
-
-  if (modeKicker) modeKicker.textContent = mode.kicker;
-  if (modeTitle) modeTitle.textContent = mode.title;
-  if (modeSummary) modeSummary.textContent = mode.summary;
-  if (modePoints) {
-    modePoints.innerHTML = mode.points.map((point) => `<li>${point}</li>`).join("");
+const typeIntro = () => {
+  if (!typeLine) {
+    revealPage();
+    return;
   }
 
-  artifacts.forEach((artifact) => {
-    artifact.classList.toggle("is-active", artifact.dataset.artifact === modeName);
-  });
+  const text = typeLine.dataset.typeText || typeLine.textContent || "";
+
+  if (reduceMotion) {
+    typeLine.textContent = text;
+    typeLine.classList.add("is-done");
+    revealPage();
+    return;
+  }
+
+  typeLine.textContent = "";
+  let index = 0;
+
+  const tick = () => {
+    typeLine.textContent = text.slice(0, index);
+    index += 1;
+
+    if (index <= text.length) {
+      window.setTimeout(tick, 68);
+      return;
+    }
+
+    typeLine.classList.add("is-done");
+    window.setTimeout(revealPage, 240);
+  };
+
+  window.setTimeout(tick, 260);
 };
 
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => setMode(button.dataset.mode));
+const renderTranslation = (key) => {
+  const translation = translations[key];
+  if (!translation) return;
+
+  translationButtons.forEach((button) => {
+    const active = button.dataset.translation === key;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+
+  if (translationKicker) translationKicker.textContent = translation.kicker;
+  if (translationTitle) translationTitle.textContent = translation.title;
+  if (translationCopy) translationCopy.textContent = translation.copy;
+  if (translationPoints) {
+    translationPoints.innerHTML = translation.points.map((point) => `<li>${point}</li>`).join("");
+  }
+};
+
+translationButtons.forEach((button) => {
+  button.addEventListener("click", () => renderTranslation(button.dataset.translation));
 });
+
+typeIntro();
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
@@ -100,17 +124,19 @@ if (contactForm) {
     const data = new FormData(contactForm);
     const name = data.get("name")?.toString().trim() || "";
     const email = data.get("email")?.toString().trim() || "";
-    const project = data.get("project")?.toString().trim() || "";
+    const website = data.get("website")?.toString().trim() || "";
+    const need = data.get("need")?.toString().trim() || "";
     const message = data.get("message")?.toString().trim() || "";
 
-    const subject = encodeURIComponent(`New build inquiry from ${name || "website visitor"}`);
+    const subject = encodeURIComponent(`Website help from ${name || "website visitor"}`);
     const body = encodeURIComponent(
       [
         `Name: ${name}`,
         `Email: ${email}`,
-        `Project type: ${project}`,
+        `Current website: ${website}`,
+        `What sounds closest: ${need}`,
         "",
-        "Context:",
+        "Plain English version:",
         message
       ].join("\n")
     );
@@ -121,91 +147,4 @@ if (contactForm) {
       formNote.textContent = "Email draft opened. If nothing happened, email hello@liamoherlihy.dev directly.";
     }
   });
-}
-
-const canvas = document.querySelector("[data-system-canvas]");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-if (canvas) {
-  const ctx = canvas.getContext("2d");
-  const points = [
-    { x: 0.12, y: 0.28, vx: 0.12, vy: 0.06, color: "#b9ff4b" },
-    { x: 0.28, y: 0.72, vx: -0.08, vy: 0.1, color: "#4ee6d6" },
-    { x: 0.46, y: 0.38, vx: 0.1, vy: -0.08, color: "#ff715b" },
-    { x: 0.66, y: 0.68, vx: -0.1, vy: 0.06, color: "#a88dff" },
-    { x: 0.82, y: 0.26, vx: 0.06, vy: -0.09, color: "#ffd166" },
-    { x: 0.9, y: 0.82, vx: -0.07, vy: 0.08, color: "#b9ff4b" }
-  ];
-
-  const resizeCanvas = () => {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-
-  const draw = () => {
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    ctx.clearRect(0, 0, width, height);
-
-    points.forEach((point) => {
-      if (!reduceMotion) {
-        point.x += point.vx * 0.0009;
-        point.y += point.vy * 0.0009;
-        if (point.x < 0.08 || point.x > 0.94) point.vx *= -1;
-        if (point.y < 0.12 || point.y > 0.88) point.vy *= -1;
-      }
-    });
-
-    for (let i = 0; i < points.length; i += 1) {
-      for (let j = i + 1; j < points.length; j += 1) {
-        const a = points[i];
-        const b = points[j];
-        const ax = a.x * width;
-        const ay = a.y * height;
-        const bx = b.x * width;
-        const by = b.y * height;
-        const dist = Math.hypot(ax - bx, ay - by);
-
-        if (dist < 520) {
-          ctx.globalAlpha = Math.max(0.05, 0.18 - dist / 3600);
-          ctx.strokeStyle = "#f2eee4";
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(ax, ay);
-          ctx.lineTo(bx, by);
-          ctx.stroke();
-        }
-      }
-    }
-
-    points.forEach((point) => {
-      const x = point.x * width;
-      const y = point.y * height;
-      ctx.globalAlpha = 0.95;
-      ctx.fillStyle = point.color;
-      ctx.beginPath();
-      ctx.arc(x, y, 4, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.globalAlpha = 0.14;
-      ctx.strokeStyle = point.color;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
-      ctx.stroke();
-    });
-
-    ctx.globalAlpha = 1;
-
-    if (!reduceMotion) {
-      window.requestAnimationFrame(draw);
-    }
-  };
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  draw();
 }

@@ -1,6 +1,6 @@
 # Liam O'Herlihy Website
 
-Static personal studio site for Liam O'Herlihy.
+Static website for Liam O'Herlihy, focused on simple websites for people who do not want to think about websites.
 
 ## Local Preview
 
@@ -13,4 +13,3 @@ Then open `http://127.0.0.1:4174/`.
 ## Deploy
 
 This site can deploy directly from the repository root with GitHub Pages.
-
