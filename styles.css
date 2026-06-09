@@ -1779,7 +1779,7 @@ body.era-live .work-row:last-child {
   border-bottom: 1px solid rgba(217, 224, 215, 0.2);
 }
 
-/* Keep the three versions structurally familiar while changing personality. */
+/* Keep the three website types structurally familiar while changing personality. */
 body.era-studio {
   --desktop: #f3f7fb;
   --desktop-dark: #d9e7f5;
@@ -2217,26 +2217,25 @@ body.era-live .work-image {
   border-radius: 8px;
 }
 
-/* Stronger mode personalities: same map, more distinct deliverables. */
+/* Mode personalities: same map, different kind of site. */
 body.era-studio {
-  --desktop: #fff7f1;
-  --desktop-dark: #ffd9c8;
-  --window: #fffdf8;
-  --window-soft: #fff0d8;
+  --desktop: #f8f2ec;
+  --desktop-dark: #eaded4;
+  --window: #fffdf9;
+  --window-soft: #f5eadf;
   --line: #151515;
-  --muted: #59504d;
-  --green: #efff35;
-  --blue: #255cff;
-  --red: #ff3f7f;
-  --shadow: 0 22px 70px rgba(255, 63, 127, 0.16), 0 10px 28px rgba(21, 21, 21, 0.08);
+  --muted: #5b5550;
+  --green: #f4e56c;
+  --blue: #315fd6;
+  --red: #d84c66;
+  --shadow: 0 16px 46px rgba(54, 43, 34, 0.14);
   background:
-    linear-gradient(90deg, rgba(37, 92, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(rgba(255, 63, 127, 0.1) 1px, transparent 1px),
-    linear-gradient(135deg, #fff7f1 0%, #f2fbff 54%, #fffbe8 100%);
+    linear-gradient(90deg, rgba(49, 95, 214, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(216, 76, 102, 0.07) 1px, transparent 1px),
+    #f8f2ec;
   background-size:
-    36px 36px,
-    36px 36px,
-    auto;
+    42px 42px,
+    42px 42px;
 }
 
 body.era-studio .window {
@@ -2245,9 +2244,7 @@ body.era-studio .window {
 }
 
 body.era-studio .window-bar {
-  background:
-    linear-gradient(90deg, rgba(255, 63, 127, 0.24), rgba(239, 255, 53, 0.28), rgba(37, 92, 255, 0.18)),
-    #fffdf8;
+  background: #fff8ee;
 }
 
 body.era-studio .startup-grid {
@@ -2257,10 +2254,10 @@ body.era-studio .startup-grid {
 }
 
 body.era-studio .computer-icon {
-  transform: rotate(-2deg);
+  transform: rotate(-0.8deg);
   border: 0;
   border-radius: 8px;
-  box-shadow: 18px 22px 0 rgba(239, 255, 53, 0.68), 0 24px 48px rgba(21, 21, 21, 0.16);
+  box-shadow: 10px 12px 0 rgba(244, 229, 108, 0.55), 0 18px 38px rgba(54, 43, 34, 0.14);
 }
 
 body.era-studio .studio-preview img {
@@ -2271,14 +2268,14 @@ body.era-studio .studio-card {
   left: 14px;
   bottom: 14px;
   width: min(230px, calc(100% - 28px));
-  border: 2px solid #111111;
+  border: 1px solid #111111;
   border-radius: 8px;
-  box-shadow: 8px 8px 0 rgba(255, 63, 127, 0.82);
+  box-shadow: 5px 5px 0 rgba(216, 76, 102, 0.36);
 }
 
 body.era-studio .studio-pill {
-  transform: rotate(4deg);
-  box-shadow: 5px 5px 0 rgba(21, 21, 21, 0.16);
+  transform: rotate(2deg);
+  box-shadow: none;
 }
 
 body.era-studio .type-line {
@@ -2294,9 +2291,9 @@ body.era-studio .work-copy p {
 
 body.era-studio .era-note {
   position: relative;
-  border: 2px solid #111111;
+  border: 1px solid #111111;
   background: var(--green);
-  box-shadow: 7px 7px 0 rgba(37, 92, 255, 0.18);
+  box-shadow: none;
 }
 
 body.era-studio .offer-chips span:nth-child(2n) {
@@ -2305,15 +2302,15 @@ body.era-studio .offer-chips span:nth-child(2n) {
 }
 
 body.era-studio .offer-chips span:nth-child(3) {
-  background: var(--red);
-  color: #ffffff;
+  background: #fffdf9;
+  color: #111111;
 }
 
 body.era-studio .upgrade-strip {
-  border: 2px solid #111111;
-  border-left-width: 10px;
+  border: 1px solid #111111;
+  border-left-width: 6px;
   background: #ffffff;
-  box-shadow: 9px 9px 0 rgba(255, 63, 127, 0.16);
+  box-shadow: none;
 }
 
 body.era-studio .range-grid {
@@ -2322,35 +2319,36 @@ body.era-studio .range-grid {
 }
 
 body.era-studio .range-card {
-  min-height: 178px;
-  padding-right: 120px;
-  border: 2px solid #111111;
+  min-height: 164px;
+  padding-right: 96px;
+  border: 1px solid #111111;
   border-radius: 8px;
   background: #ffffff;
-  box-shadow: 8px 8px 0 rgba(21, 21, 21, 0.08);
+  box-shadow: none;
 }
 
 body.era-studio .range-card:nth-child(1) {
-  background: #efff35;
+  background: #fffdf9;
 }
 
 body.era-studio .range-card:nth-child(2) {
-  background: #ffe3f0;
+  background: #fffdf9;
 }
 
 body.era-studio .range-card:nth-child(3) {
-  background: #e9f8ff;
+  background: #fffdf9;
 }
 
 body.era-studio .range-card::after {
-  width: 92px;
-  height: 92px;
-  border: 2px solid #111111;
+  width: 68px;
+  height: 68px;
+  border: 1px solid #111111;
   border-radius: 0;
   background:
-    linear-gradient(135deg, transparent 0 42%, #111111 42% 45%, transparent 45%),
-    linear-gradient(45deg, var(--red) 0 42%, var(--green) 42% 70%, var(--blue) 70%);
-  transform: rotate(7deg);
+    linear-gradient(135deg, transparent 0 44%, rgba(17, 17, 17, 0.82) 44% 46%, transparent 46%),
+    linear-gradient(45deg, rgba(216, 76, 102, 0.92) 0 42%, rgba(244, 229, 108, 0.92) 42% 70%, rgba(49, 95, 214, 0.76) 70%);
+  opacity: 0.84;
+  transform: rotate(3deg);
 }
 
 body.era-studio .range-card span {
@@ -2403,20 +2401,20 @@ body.era-studio .work-row:nth-child(2) {
 
 body.era-studio .work-image {
   height: 248px;
-  transform: rotate(1.5deg);
-  border: 2px solid #111111;
-  box-shadow: 8px 8px 0 rgba(239, 255, 53, 0.62);
+  transform: rotate(0.5deg);
+  border: 1px solid #111111;
+  box-shadow: none;
 }
 
 body.era-studio .work-row:nth-child(2) .work-image {
-  transform: rotate(-1.5deg);
-  box-shadow: 8px 8px 0 rgba(37, 92, 255, 0.2);
+  transform: rotate(-0.5deg);
+  box-shadow: none;
 }
 
 body.era-studio .contact-form {
-  border: 2px solid #111111;
-  background: #efff35;
-  box-shadow: 10px 10px 0 rgba(255, 63, 127, 0.18);
+  border: 1px solid #111111;
+  background: #fffdf9;
+  box-shadow: none;
 }
 
 body.era-studio .button {
@@ -2425,14 +2423,14 @@ body.era-studio .button {
 }
 
 body.era-live {
-  --desktop: #070908;
+  --desktop: #0a0d0b;
   --desktop-dark: #111b15;
-  --window: #101611;
-  --window-soft: #18251d;
-  --green: #b8ff2c;
-  --blue: #65a2ff;
-  --red: #ff6b57;
-  --shadow: 0 0 0 1px rgba(184, 255, 44, 0.18), 0 24px 80px rgba(0, 0, 0, 0.48);
+  --window: #111611;
+  --window-soft: #18201a;
+  --green: #c9e66a;
+  --blue: #82a9e8;
+  --red: #d96d5c;
+  --shadow: 0 0 0 1px rgba(201, 230, 106, 0.16), 0 20px 62px rgba(0, 0, 0, 0.42);
 }
 
 body.era-live .window {
@@ -2442,14 +2440,12 @@ body.era-live .window {
 
 body.era-live .window-bar {
   min-height: 34px;
-  background:
-    linear-gradient(90deg, rgba(184, 255, 44, 0.18), rgba(101, 162, 255, 0.08)),
-    rgba(11, 16, 13, 0.96);
+  background: rgba(19, 29, 21, 0.96);
 }
 
 body.era-live .computer-icon {
   border-radius: 4px;
-  box-shadow: inset 0 0 0 1px rgba(217, 224, 215, 0.2), 0 26px 70px rgba(0, 0, 0, 0.36);
+  box-shadow: inset 0 0 0 1px rgba(217, 224, 215, 0.18), 0 18px 46px rgba(0, 0, 0, 0.32);
 }
 
 body.era-live .system-top {
@@ -2475,19 +2471,19 @@ body.era-live .system-grid span:nth-child(4)::before {
 }
 
 body.era-live .system-grid span:nth-child(1)::before {
-  content: "quote";
+  content: "service";
 }
 
 body.era-live .system-grid span:nth-child(2)::before {
-  content: "book";
+  content: "budget";
 }
 
 body.era-live .system-grid span:nth-child(3)::before {
-  content: "route";
+  content: "timing";
 }
 
 body.era-live .system-grid span:nth-child(4)::before {
-  content: "reply";
+  content: "notes";
 }
 
 body.era-live .era-note,
@@ -2506,13 +2502,11 @@ body.era-live .range-grid {
 }
 
 body.era-live .range-card {
-  min-height: 178px;
+  min-height: 164px;
   padding-right: 130px;
   border: 1px solid rgba(217, 224, 215, 0.2);
   border-radius: 4px;
-  background:
-    linear-gradient(90deg, rgba(184, 255, 44, 0.08), transparent 62%),
-    rgba(5, 5, 5, 0.3);
+  background: rgba(217, 224, 215, 0.04);
 }
 
 body.era-live .range-card span {
@@ -2533,6 +2527,7 @@ body.era-live .range-card::after {
     linear-gradient(90deg, rgba(101, 162, 255, 0.82) 0 56%, transparent 56%) 12px 34px / 70px 8px no-repeat,
     linear-gradient(90deg, rgba(255, 107, 87, 0.78) 0 38%, transparent 38%) 12px 54px / 70px 8px no-repeat,
     rgba(217, 224, 215, 0.06);
+  opacity: 0.72;
 }
 
 body.era-live .translator {
@@ -2588,8 +2583,7 @@ body.era-live .work-index {
 }
 
 body.era-live .work-copy p::after {
-  content: " / active";
-  color: var(--green);
+  content: "";
 }
 
 body.era-live .work-copy span {
@@ -2616,7 +2610,7 @@ body.era-live .contact-form {
 }
 
 body.era-live .contact-form::before {
-  content: "lead brief";
+  content: "project note";
   color: var(--green);
   font-size: 0.72rem;
   font-weight: 900;
@@ -2625,7 +2619,7 @@ body.era-live .contact-form::before {
 
 body.era-live .button {
   min-height: 48px;
-  box-shadow: 0 0 24px rgba(184, 255, 44, 0.22);
+  box-shadow: none;
 }
 
 @media (max-width: 980px) {

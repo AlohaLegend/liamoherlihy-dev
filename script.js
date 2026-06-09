@@ -27,107 +27,107 @@ const formNote = document.querySelector("[data-form-note]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const bootLines = [
-  "checking keyboard...",
-  "loading plain-English translator...",
-  "mounting portfolio disk...",
-  "preparing interface upgrades...",
-  "turning jargon off...",
+  "checking the old site folder...",
+  "loading project notes...",
+  "finding the important photos...",
+  "clearing out the extra words...",
+  "setting the first page...",
   "ready."
 ];
 
 const eras = {
   classic: {
     label: "Basic Site",
-    stage: "Version 1: basic website",
-    copy: "Clear services, clear trust, clear next step.",
+    stage: "Plain website",
+    copy: "Plain pages, real examples, and an obvious next step.",
     personality:
-      "A clean starting point for businesses that need to look current, explain the offer, and make the next step obvious.",
-    upgradeName: "Basic version",
-    upgradeLine: "Loading the simple service-site version.",
+      "A clean starting point for a business that needs to look current, explain what it does, and stop making people guess.",
+    upgradeName: "Basic site",
+    upgradeLine: "Opening the simple site.",
     range: {
-      kicker: "Basic direction",
-      title: "Make the business easy to understand in one visit.",
+      kicker: "Basic site",
+      title: "Make the business easy to understand.",
       copy:
-        "This version is for the owner whose website needs to stop confusing people and start answering the first questions.",
+        "Good for an owner whose site needs to feel current, explain the work, and make action easy.",
       cards: [
         {
           number: "01",
-          title: "Service snapshot",
-          copy: "What you do, where you do it, who it is for, and what it costs when that is useful."
+          title: "What you do",
+          copy: "A clean explanation of the service, the area, and the kind of customer it is for."
         },
         {
           number: "02",
-          title: "Trust in plain sight",
-          copy: "Reviews, photos, proof, FAQs, and small details placed before someone hesitates."
+          title: "Why people trust it",
+          copy: "Reviews, photos, past work, FAQs, and small details placed where they matter."
         },
         {
           number: "03",
-          title: "Fast contact path",
-          copy: "Call, quote, book, directions, or message placed where a normal customer expects it."
+          title: "How to start",
+          copy: "Call, quote, book, directions, or message placed where a customer expects it."
         }
       ]
     }
   },
   studio: {
     label: "Creative Site",
-    stage: "Version 2: creative website",
-    copy: "Same structure, stronger taste, more visual proof.",
+    stage: "Visual website",
+    copy: "More feeling, stronger images, and a point of view.",
     personality:
-      "A more expressive version for restaurants, creatives, brands, and anyone whose taste is part of the sale.",
-    upgradeName: "Creative version",
-    upgradeLine: "Switching to the more visual brand version.",
+      "A more visual site for restaurants, artists, brands, and anyone whose taste is part of the work.",
+    upgradeName: "Creative site",
+    upgradeLine: "Opening a more visual site.",
     range: {
-      kicker: "Creative direction",
-      title: "Make the business feel specific before anyone reads a paragraph.",
+      kicker: "Creative site",
+      title: "Let the work set the mood first.",
       copy:
-        "This version is for restaurants, artists, founders, and brands where taste, imagery, and pacing help sell the offer.",
+        "Good for work where photos, pacing, and taste carry a real part of the decision.",
       cards: [
         {
           number: "A",
-          title: "Visual first impression",
-          copy: "Photography, motion feel, and layout rhythm that create a point of view immediately."
+          title: "First look",
+          copy: "A strong opening image, a little restraint, and a page that feels like the work."
         },
         {
           number: "B",
-          title: "Story-led browsing",
-          copy: "Sections that feel paced, curated, and memorable instead of stacked like a generic homepage."
+          title: "Project rhythm",
+          copy: "Sections paced like a small edit instead of a pile of generic homepage blocks."
         },
         {
           number: "C",
-          title: "Proof with taste",
-          copy: "Projects, credits, products, menus, and visuals arranged so the work sells itself."
+          title: "The good stuff",
+          copy: "Projects, credits, menus, products, or images arranged so the work sells itself."
         }
       ]
     }
   },
   live: {
     label: "Business Site",
-    stage: "Version 3: business website",
-    copy: "Same structure, sharper lead flow, more useful business logic.",
+    stage: "Practical website",
+    copy: "Clear choices, better questions, and less back-and-forth.",
     personality:
-      "A conversion-focused version for owners who want the site to guide customers, collect better requests, and support operations.",
-    upgradeName: "Business version",
-    upgradeLine: "Switching to the business-focused version.",
+      "A practical site for owners who want better questions coming in and an easier next conversation.",
+    upgradeName: "Business site",
+    upgradeLine: "Opening the practical site.",
     range: {
-      kicker: "Business direction",
-      title: "Make the website behave like a better front desk.",
+      kicker: "Business site",
+      title: "Make it easier to answer people.",
       copy:
-        "This version is for a company that needs better leads, clearer offers, smarter intake, and fewer loose ends.",
+        "Good for a company that needs clearer choices, better questions, and fewer loose ends after someone reaches out.",
       cards: [
         {
           number: "01",
-          title: "Offer and qualification",
-          copy: "Service pages, packages, or quote paths that help visitors choose the right next step."
+          title: "What you sell",
+          copy: "Service pages, packages, or quote paths that help people choose the right next step."
         },
         {
           number: "02",
-          title: "Lead intake system",
-          copy: "Forms and flows that collect the details you actually need before the first conversation."
+          title: "What to ask",
+          copy: "Questions that collect the details you actually need before the first conversation."
         },
         {
           number: "03",
-          title: "Follow-up logic",
-          copy: "Automations, AI helpers, or simple dashboards that make the website useful after launch."
+          title: "How to reply",
+          copy: "A launch setup that makes replies, updates, and next steps easier to keep track of."
         }
       ]
     }
@@ -163,20 +163,20 @@ const translations = {
     kicker: "What that usually means",
     title: "The trust is real, but it is not working hard enough.",
     copy:
-      "Reviews, photos, services, press, and past work should be close to the decision. I would turn scattered proof into a clear reason to trust you.",
+      "Reviews, photos, services, press, and past work should be close to the decision. I would turn scattered good material into a clear reason to trust you.",
     points: [
       "Project rows, review placement, FAQs, and stronger service pages",
-      "A portfolio or proof section that normal people can scan quickly"
+      "A work or trust section that normal people can scan quickly"
     ]
   },
   blank: {
     kicker: "What that usually means",
-    title: "You need someone to shape the first version.",
+    title: "You need someone to shape the starting point.",
     copy:
-      "You do not need a perfect brief. I can help turn the rough idea into a simple website plan, then build the useful first version.",
+      "You do not need a perfect brief. I can help turn the rough idea into a simple website plan, then build the useful starting point.",
     points: [
-      "Plain-English questions before design starts",
-      "A small site that explains the offer and gives people a way to act"
+      "Simple questions before design starts",
+      "A small site that explains what you do and gives people a way to act"
     ]
   }
 };
@@ -443,7 +443,7 @@ if (contactForm) {
         `Current website: ${website}`,
         `What sounds closest: ${need}`,
         "",
-        "Plain English version:",
+        "Notes:",
         message
       ].join("\n")
     );
