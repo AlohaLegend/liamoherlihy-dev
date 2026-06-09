@@ -10,6 +10,7 @@ const menuClock = document.querySelector("[data-menu-clock]");
 const eraLabel = document.querySelector("[data-era-label]");
 const eraStage = document.querySelector("[data-era-stage]");
 const eraCopy = document.querySelector("[data-era-copy]");
+const eraPersonality = document.querySelector("[data-era-personality]");
 const eraButtons = Array.from(document.querySelectorAll("[data-era-button]"));
 const windows = Array.from(document.querySelectorAll("[data-window]"));
 const translationButtons = Array.from(document.querySelectorAll("[data-translation]"));
@@ -32,25 +33,31 @@ const bootLines = [
 
 const eras = {
   classic: {
-    label: "Classic OS",
-    stage: "v1 classic desktop",
-    copy: "First, make the old thing readable and useful.",
-    upgradeName: "Interface v1",
-    upgradeLine: "Booting the classic desktop."
+    label: "Repair Build",
+    stage: "Generation 1: plain-service site",
+    copy: "Strip confusion away: who you help, what you do, and how to start.",
+    personality:
+      "A practical refresh for the business that needs to look current and make the next step obvious.",
+    upgradeName: "Generation 1",
+    upgradeLine: "Loading the clear local-business build."
   },
   studio: {
-    label: "Studio UI",
-    stage: "v2 modern studio",
-    copy: "Same message, cleaner spacing, sharper proof, easier reading.",
-    upgradeName: "Interface v2",
-    upgradeLine: "Installing a cleaner modern studio layer."
+    label: "Showcase Build",
+    stage: "Generation 2: visual showcase site",
+    copy: "Turn the same business into something people can feel, browse, and remember.",
+    personality:
+      "A custom visual direction for restaurants, creatives, brands, and anyone whose taste is part of the sale.",
+    upgradeName: "Generation 2",
+    upgradeLine: "Rebuilding the page as a visual showcase."
   },
   live: {
-    label: "Live Build",
-    stage: "v3 live business site",
-    copy: "The same site becomes faster, richer, and ready for real customers.",
-    upgradeName: "Interface v3",
-    upgradeLine: "Activating the live-business version."
+    label: "System Build",
+    stage: "Generation 3: custom web or AI system",
+    copy: "Make the website do more: collect requests, route leads, answer questions, and support the business.",
+    personality:
+      "A more custom build for owners who want a site, workflow, and AI-assisted helper shaped around how they actually operate.",
+    upgradeName: "Generation 3",
+    upgradeLine: "Activating the custom business-system layer."
   }
 };
 
@@ -223,6 +230,7 @@ const updateEraText = (key) => {
   if (eraLabel) eraLabel.textContent = era.label;
   if (eraStage) eraStage.textContent = era.stage;
   if (eraCopy) eraCopy.textContent = era.copy;
+  if (eraPersonality) eraPersonality.textContent = era.personality;
 
   eraButtons.forEach((button) => {
     const active = button.dataset.eraButton === key;
