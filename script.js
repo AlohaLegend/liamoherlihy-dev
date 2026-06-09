@@ -11,6 +11,10 @@ const eraLabel = document.querySelector("[data-era-label]");
 const eraStage = document.querySelector("[data-era-stage]");
 const eraCopy = document.querySelector("[data-era-copy]");
 const eraPersonality = document.querySelector("[data-era-personality]");
+const rangeKicker = document.querySelector("[data-range-kicker]");
+const rangeTitle = document.querySelector("[data-range-title]");
+const rangeCopy = document.querySelector("[data-range-copy]");
+const rangeCards = Array.from(document.querySelectorAll("[data-range-card]"));
 const eraButtons = Array.from(document.querySelectorAll("[data-era-button]"));
 const windows = Array.from(document.querySelectorAll("[data-window]"));
 const translationButtons = Array.from(document.querySelectorAll("[data-translation]"));
@@ -39,7 +43,30 @@ const eras = {
     personality:
       "A clean starting point for businesses that need to look current, explain the offer, and make the next step obvious.",
     upgradeName: "Basic version",
-    upgradeLine: "Loading the simple service-site version."
+    upgradeLine: "Loading the simple service-site version.",
+    range: {
+      kicker: "Basic direction",
+      title: "Make the business easy to understand in one visit.",
+      copy:
+        "This version is for the owner whose website needs to stop confusing people and start answering the first questions.",
+      cards: [
+        {
+          number: "01",
+          title: "Service snapshot",
+          copy: "What you do, where you do it, who it is for, and what it costs when that is useful."
+        },
+        {
+          number: "02",
+          title: "Trust in plain sight",
+          copy: "Reviews, photos, proof, FAQs, and small details placed before someone hesitates."
+        },
+        {
+          number: "03",
+          title: "Fast contact path",
+          copy: "Call, quote, book, directions, or message placed where a normal customer expects it."
+        }
+      ]
+    }
   },
   studio: {
     label: "Creative Site",
@@ -48,7 +75,30 @@ const eras = {
     personality:
       "A more expressive version for restaurants, creatives, brands, and anyone whose taste is part of the sale.",
     upgradeName: "Creative version",
-    upgradeLine: "Switching to the more visual brand version."
+    upgradeLine: "Switching to the more visual brand version.",
+    range: {
+      kicker: "Creative direction",
+      title: "Make the business feel specific before anyone reads a paragraph.",
+      copy:
+        "This version is for restaurants, artists, founders, and brands where taste, imagery, and pacing help sell the offer.",
+      cards: [
+        {
+          number: "A",
+          title: "Visual first impression",
+          copy: "Photography, motion feel, and layout rhythm that create a point of view immediately."
+        },
+        {
+          number: "B",
+          title: "Story-led browsing",
+          copy: "Sections that feel paced, curated, and memorable instead of stacked like a generic homepage."
+        },
+        {
+          number: "C",
+          title: "Proof with taste",
+          copy: "Projects, credits, products, menus, and visuals arranged so the work sells itself."
+        }
+      ]
+    }
   },
   live: {
     label: "Business Site",
@@ -57,7 +107,30 @@ const eras = {
     personality:
       "A conversion-focused version for owners who want the site to guide customers, collect better requests, and support operations.",
     upgradeName: "Business version",
-    upgradeLine: "Switching to the business-focused version."
+    upgradeLine: "Switching to the business-focused version.",
+    range: {
+      kicker: "Business direction",
+      title: "Make the website behave like a better front desk.",
+      copy:
+        "This version is for a company that needs better leads, clearer offers, smarter intake, and fewer loose ends.",
+      cards: [
+        {
+          number: "01",
+          title: "Offer and qualification",
+          copy: "Service pages, packages, or quote paths that help visitors choose the right next step."
+        },
+        {
+          number: "02",
+          title: "Lead intake system",
+          copy: "Forms and flows that collect the details you actually need before the first conversation."
+        },
+        {
+          number: "03",
+          title: "Follow-up logic",
+          copy: "Automations, AI helpers, or simple dashboards that make the website useful after launch."
+        }
+      ]
+    }
   }
 };
 
@@ -231,6 +304,21 @@ const updateEraText = (key) => {
   if (eraStage) eraStage.textContent = era.stage;
   if (eraCopy) eraCopy.textContent = era.copy;
   if (eraPersonality) eraPersonality.textContent = era.personality;
+  if (rangeKicker) rangeKicker.textContent = era.range.kicker;
+  if (rangeTitle) rangeTitle.textContent = era.range.title;
+  if (rangeCopy) rangeCopy.textContent = era.range.copy;
+
+  rangeCards.forEach((card, index) => {
+    const data = era.range.cards[index];
+    if (!data) return;
+
+    const number = card.querySelector("[data-card-number]");
+    const title = card.querySelector("[data-card-title]");
+    const copy = card.querySelector("[data-card-copy]");
+    if (number) number.textContent = data.number;
+    if (title) title.textContent = data.title;
+    if (copy) copy.textContent = data.copy;
+  });
 
   eraButtons.forEach((button) => {
     const active = button.dataset.eraButton === key;
