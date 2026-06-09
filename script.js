@@ -2,7 +2,15 @@ const year = document.querySelector("[data-year]");
 const typeLine = document.querySelector("[data-type-text]");
 const bootScreen = document.querySelector("[data-boot-screen]");
 const bootLog = document.querySelector("[data-boot-log]");
+const upgradeOverlay = document.querySelector("[data-upgrade-overlay]");
+const upgradeName = document.querySelector("[data-upgrade-name]");
+const upgradeLine = document.querySelector("[data-upgrade-line]");
+const upgradeMeter = document.querySelector("[data-upgrade-meter]");
 const menuClock = document.querySelector("[data-menu-clock]");
+const eraLabel = document.querySelector("[data-era-label]");
+const eraStage = document.querySelector("[data-era-stage]");
+const eraCopy = document.querySelector("[data-era-copy]");
+const eraButtons = Array.from(document.querySelectorAll("[data-era-button]"));
 const windows = Array.from(document.querySelectorAll("[data-window]"));
 const translationButtons = Array.from(document.querySelectorAll("[data-translation]"));
 const translationKicker = document.querySelector("[data-translation-kicker]");
@@ -17,9 +25,38 @@ const bootLines = [
   "checking keyboard...",
   "loading plain-English translator...",
   "mounting portfolio disk...",
+  "preparing interface upgrades...",
   "turning jargon off...",
   "ready."
 ];
+
+const eras = {
+  classic: {
+    label: "Classic OS",
+    stage: "v1 classic desktop",
+    copy: "First, make the old thing readable and useful.",
+    upgradeName: "Interface v1",
+    upgradeLine: "Booting the classic desktop."
+  },
+  studio: {
+    label: "Studio UI",
+    stage: "v2 modern studio",
+    copy: "Same message, cleaner spacing, sharper proof, easier reading.",
+    upgradeName: "Interface v2",
+    upgradeLine: "Installing a cleaner modern studio layer."
+  },
+  live: {
+    label: "Live Build",
+    stage: "v3 live business site",
+    copy: "The same site becomes faster, richer, and ready for real customers.",
+    upgradeName: "Interface v3",
+    upgradeLine: "Activating the live-business version."
+  }
+};
+
+let currentEra = "";
+let userPickedEra = false;
+const upgradeTimers = [];
 
 const translations = {
   old: {
@@ -83,6 +120,7 @@ window.setInterval(updateClock, 1000);
 const openDesktop = () => {
   document.body.classList.add("is-booted");
   if (bootScreen) bootScreen.setAttribute("aria-hidden", "true");
+  setEra("classic", { animate: false });
 
   windows.forEach((item, index) => {
     const delay = reduceMotion ? 0 : 120 + index * 120;
@@ -90,6 +128,7 @@ const openDesktop = () => {
   });
 
   window.setTimeout(typeIntro, reduceMotion ? 0 : 240);
+  scheduleAutoUpgrades();
 };
 
 const appendBootLine = (text, onComplete) => {
@@ -176,6 +215,97 @@ const typeIntro = () => {
 
   tick();
 };
+
+const updateEraText = (key) => {
+  const era = eras[key];
+  if (!era) return;
+
+  if (eraLabel) eraLabel.textContent = era.label;
+  if (eraStage) eraStage.textContent = era.stage;
+  if (eraCopy) eraCopy.textContent = era.copy;
+
+  eraButtons.forEach((button) => {
+    const active = button.dataset.eraButton === key;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+};
+
+const applyEraClass = (key) => {
+  document.body.classList.remove("era-classic", "era-studio", "era-live");
+  document.body.classList.add(`era-${key}`);
+  document.body.dataset.era = key;
+  currentEra = key;
+  updateEraText(key);
+};
+
+const showUpgradeOverlay = (key) => {
+  const era = eras[key];
+  if (!upgradeOverlay || !era) return;
+
+  if (upgradeName) upgradeName.textContent = era.upgradeName;
+  if (upgradeLine) upgradeLine.textContent = era.upgradeLine;
+  if (upgradeMeter) {
+    upgradeMeter.style.animation = "none";
+    upgradeMeter.offsetHeight;
+    upgradeMeter.style.animation = "";
+  }
+
+  upgradeOverlay.setAttribute("aria-hidden", "false");
+  upgradeOverlay.classList.add("is-visible", "is-running");
+  document.body.classList.add("is-upgrading");
+};
+
+const hideUpgradeOverlay = () => {
+  if (upgradeOverlay) {
+    upgradeOverlay.classList.remove("is-visible", "is-running");
+    upgradeOverlay.setAttribute("aria-hidden", "true");
+  }
+  document.body.classList.remove("is-upgrading");
+};
+
+const setEra = (key, options = {}) => {
+  if (!eras[key] || key === currentEra) {
+    updateEraText(currentEra);
+    return;
+  }
+
+  const shouldAnimate = options.animate !== false && !reduceMotion;
+
+  if (!shouldAnimate) {
+    applyEraClass(key);
+    hideUpgradeOverlay();
+    return;
+  }
+
+  showUpgradeOverlay(key);
+  window.setTimeout(() => applyEraClass(key), 360);
+  window.setTimeout(hideUpgradeOverlay, 1180);
+};
+
+const scheduleAutoUpgrades = () => {
+  if (reduceMotion) return;
+
+  upgradeTimers.push(
+    window.setTimeout(() => {
+      if (!userPickedEra) setEra("studio", { animate: true });
+    }, 3600)
+  );
+
+  upgradeTimers.push(
+    window.setTimeout(() => {
+      if (!userPickedEra) setEra("live", { animate: true });
+    }, 8300)
+  );
+};
+
+eraButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    userPickedEra = true;
+    upgradeTimers.forEach((timer) => window.clearTimeout(timer));
+    setEra(button.dataset.eraButton, { animate: true });
+  });
+});
 
 const renderTranslation = (key) => {
   const translation = translations[key];
