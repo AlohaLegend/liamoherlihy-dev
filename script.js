@@ -33,31 +33,31 @@ const bootLines = [
 
 const eras = {
   classic: {
-    label: "Repair Build",
-    stage: "Generation 1: plain-service site",
-    copy: "Strip confusion away: who you help, what you do, and how to start.",
+    label: "Basic Site",
+    stage: "Version 1: basic website",
+    copy: "Clear services, clear trust, clear next step.",
     personality:
-      "A practical refresh for the business that needs to look current and make the next step obvious.",
-    upgradeName: "Generation 1",
-    upgradeLine: "Loading the clear local-business build."
+      "A clean starting point for businesses that need to look current, explain the offer, and make the next step obvious.",
+    upgradeName: "Basic version",
+    upgradeLine: "Loading the simple service-site version."
   },
   studio: {
-    label: "Showcase Build",
-    stage: "Generation 2: visual showcase site",
-    copy: "Turn the same business into something people can feel, browse, and remember.",
+    label: "Creative Site",
+    stage: "Version 2: creative website",
+    copy: "Same structure, stronger taste, more visual proof.",
     personality:
-      "A custom visual direction for restaurants, creatives, brands, and anyone whose taste is part of the sale.",
-    upgradeName: "Generation 2",
-    upgradeLine: "Rebuilding the page as a visual showcase."
+      "A more expressive version for restaurants, creatives, brands, and anyone whose taste is part of the sale.",
+    upgradeName: "Creative version",
+    upgradeLine: "Switching to the more visual brand version."
   },
   live: {
-    label: "System Build",
-    stage: "Generation 3: custom web or AI system",
-    copy: "Make the website do more: collect requests, route leads, answer questions, and support the business.",
+    label: "Business Site",
+    stage: "Version 3: business website",
+    copy: "Same structure, sharper lead flow, more useful business logic.",
     personality:
-      "A more custom build for owners who want a site, workflow, and AI-assisted helper shaped around how they actually operate.",
-    upgradeName: "Generation 3",
-    upgradeLine: "Activating the custom business-system layer."
+      "A conversion-focused version for owners who want the site to guide customers, collect better requests, and support operations.",
+    upgradeName: "Business version",
+    upgradeLine: "Switching to the business-focused version."
   }
 };
 
